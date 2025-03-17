@@ -17,7 +17,7 @@ class JobCategoryController extends Controller
         ]);
 
         $vacancie = JobVacancie::with('category' , 'avaliable')->get();
-
+        // kenapa tidak menggunakan with
         foreach ($vacancie as $v)
         {
             $data = [

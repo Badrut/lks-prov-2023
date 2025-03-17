@@ -6,5 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class JobCategory extends Model
 {
-    //
+    protected $guarded = ['id'];
+
+    public function vacancies()
+{
+    return $this->hasMany(JobVacancie::class, 'job_category_id');
+}
+
 }

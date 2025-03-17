@@ -18,6 +18,9 @@ Route::prefix('/v1/auth')->group(function() {
 
 Route::prefix('/v1')->group(function() {
     Route::post('/validations' , action: [ValidationController::class , 'sent']);
+    Route::post('/applications' , action: [ValidationController::class , 'sent']);
     Route::get('/validations' , action: [ValidationController::class , 'index']);
     Route::get('/job_vacancies' , action: [JobCategoryController::class , 'index']);
+    Route::get('/job_vacancies/{id}' , action: [JobCategoryController::class , 'show']);
+
 });

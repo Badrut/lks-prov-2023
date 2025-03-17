@@ -10,7 +10,7 @@ class JobCategory extends Model
 
     public function vacancies()
 {
-    return $this->hasMany(JobVacancie::class, 'job_category_id');
+    return $this->hasMany(JobVacancie::class, 'id');
 }
 
 }

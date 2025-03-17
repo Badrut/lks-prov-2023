@@ -17,4 +17,9 @@ class JobVacancie extends Model
     {
         return $this->hasOne(AvailablePosition::class , 'job_vacancy_id');
     }
+
+    public function jobApplyPosition()
+    {
+        return $this->hasOne(JobApplyPosition::class , 'job_vacancy_id ');
+    }
 }

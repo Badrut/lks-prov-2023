@@ -21,6 +21,7 @@ class ValidationController extends Controller
             $validation = Validation::where('society_id' , $scoiety->id)->first();
 
             $data = [
+                // data id
                 "status" => $validation->status,
                 "work_experience" => $validation->work_experience,
                 "job_category_id"=> $validation->job_category_id,

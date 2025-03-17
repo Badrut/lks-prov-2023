@@ -60,14 +60,14 @@ class JobApplySocietieController extends Controller
             ]);
 
 
-
+            // todo blm dievaluasi
             $token = Societie::where('login_tokens' , $request->token)->first();
             $valid = JobApplySocietie::where('society_id' , $token->id)->first();
             $validation = Validation::where('society_id' , $token->id)->first();
             if($validation->status !== 'pending')
             {
             if(is_null($valid))
-            {
+            {positions
                 $societie = JobApplySocietie::create([
                     'job_vacancy_id' => $request->vacancy_id,
                     'society_id' => $token->id,

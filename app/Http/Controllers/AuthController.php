@@ -23,10 +23,12 @@ class AuthController extends Controller
                 'id_card_number' => 'required',
                 'password' => 'required'
             ]);
+            // TODO kenapa harus menggunakan id?
             $id = $request->id_card_number % 100;
              $societies = Societie::with(relations: 'regional')->where('id_card_number' , $request->id_card_number)->first();
             if($credentials['password'] === $societies['password'])
             {
+                // untuk apa data $user?
                 $user = User::findOrFail($id);
                 $token = Hash::make('id_card_number');
 
@@ -49,6 +51,7 @@ class AuthController extends Controller
 
                 ];
 
+                // return code ?
                 return response()->json(['body' => $data]);
             }
             else
@@ -63,6 +66,7 @@ class AuthController extends Controller
         }
         catch(ModelNotFoundException $e)
         {
+            // kenapa ada exceprion model, tidak ada yang kamu throw new
             return response()->json(['message' => $e->getMessage()] , 404);
         }
         catch(AuthenticationException $e)
@@ -75,7 +79,7 @@ class AuthController extends Controller
         }
     }
 
-    public function logout(Request $request)
+    public function logout(RequeExceptionst $request)
     {
           try {
             $credentilas = $request->validate(
@@ -91,6 +95,7 @@ class AuthController extends Controller
                     return response()->json(['message' => 'Logout Success'] , 200);
                 }
                 else {
+                    // authentication exception saja
                     throw new Exception();
                 }
                 }

@@ -20,6 +20,11 @@ class JobVacancie extends Model
 
     public function jobApplyPosition()
     {
-        return $this->hasOne(JobApplyPosition::class , 'job_vacancy_id ');
+        return $this->hasOne(JobApplyPosition::class , 'job_vacancy_id');
+    }
+
+    public function jobApplySocietie()
+    {
+        return $this->hasOne(JobApplySocietie::class , 'job_vacancy_id');
     }
 }

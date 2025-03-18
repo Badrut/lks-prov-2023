@@ -21,25 +21,24 @@ class JobApplySocietieController extends Controller
                 'token' => 'required'
             ]);
 
-            $vacancie = JobVacancie::with('category' , 'avaliable' , 'jobApplyPosition')->get();
-
+            $vacancie = JobVacancie::with('category' , 'avaliable' , 'jobApplyPosition' , 'jobApplySocietie')->get();
             foreach ($vacancie as $v)
             {
                 $data = [
                     'position' => $v->avaliable->position,
-                    'capacity' => $v->avaliable->capacity,
-                    'status' => $v->avaliable->status,
-                    'apply_capacity' => $v->avaliable->apply_capacity
+                    'status' => $v->jobApplyPosition->status,
+                    'notes' => $v->jobApplySocietie->notes
                 ];
                 return response()->json(['vacancie' =>
             [
-                'id' => $v->id,
-                'category' => $v->category,
-                'Company' => $v->company,
-                'address' => $v->address,
-                'description' =>$v->description,
-                'avaliable_positin' => $data
-            ]]);
+                // 'id' => $v->id,
+                // 'category' => $v->category,
+                // 'Company' => $v->company,
+                // 'address' => $v->address,
+                // 'position' => $data
+                $vacancie
+            ]
+        ]);
             }
            }
 
@@ -64,6 +63,7 @@ class JobApplySocietieController extends Controller
             $token = Societie::where('login_tokens' , $request->token)->first();
             $valid = JobApplySocietie::where('society_id' , $token->id)->first();
             $validation = Validation::where('society_id' , $token->id)->first();
+
             if($validation->status !== 'pending')
             {
             if(is_null($valid))

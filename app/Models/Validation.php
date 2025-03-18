@@ -8,4 +8,9 @@ class Validation extends Model
 {
     protected $guarded = ['id'];
     public $timestamps = false;
+
+    public function validator()
+    {
+        return $this->belongsTo(Validator::class);
+    }
 }

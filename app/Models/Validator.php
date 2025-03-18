@@ -7,4 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class Validator extends Model
 {
     protected $guarded = ['id'];
+
+    public function validation()
+    {
+        return $this->hasOne(Validation::class);
+    }
 }

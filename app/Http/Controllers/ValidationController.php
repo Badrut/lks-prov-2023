@@ -17,6 +17,7 @@ class ValidationController extends Controller
             $request->validate([
                 'token' => 'required'
             ]);
+
             $scoiety = Societie::where('login_tokens' , $request->token)->first();
             $validation = Validation::where('society_id' , $scoiety->id)->first();
 
@@ -27,7 +28,7 @@ class ValidationController extends Controller
                 "job_position" => $validation->job_position,
                 "reason_accepted" => $validation->reason_accepted,
                 "validator_notes"=> $validation->validator_notes,
-                "validator" => $validation->validator
+                "validator" => $validation->validator->name
             ];
 
             return response()->json(['validation' => $data] , 200);

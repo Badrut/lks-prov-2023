@@ -7,9 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 class AvailablePosition extends Model
 {
     protected $guarded = ['id'];
+    public $timestamps = false;
 
     protected $hidden = [
-        'id',
         'job_vacancy_id',
     ];
 

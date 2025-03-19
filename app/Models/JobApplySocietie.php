@@ -13,4 +13,9 @@ class JobApplySocietie extends Model
     {
         return $this->belongsTo(JobVacancie::class , 'id');
     }
+
+    public function societie()
+    {
+        return $this->belongsTo(Societie::class , 'society_id');
+    }
 }

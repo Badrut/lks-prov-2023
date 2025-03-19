@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\JobApplySocietieController;
 use App\Http\Controllers\JobCategoryController;
+use App\Http\Controllers\JobVacancieController;
 use App\Http\Controllers\ValidationController;
 use App\Models\JobApplySocietie;
 use App\Models\JobCategory;
@@ -25,5 +26,7 @@ Route::prefix('/v1')->group(function() {
     Route::get('/validations' , action: [ValidationController::class , 'index']);
     Route::get('/job_vacancies' , action: [JobCategoryController::class , 'index']);
     Route::get('/job_vacancies/{id}' , action: [JobCategoryController::class , 'show']);
+    Route::get('/check' , [JobVacancieController::class , 'check']);
+
 
 });

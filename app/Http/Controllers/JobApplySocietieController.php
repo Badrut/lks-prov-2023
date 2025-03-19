@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AvailablePosition;
 use App\Models\JobApplyPosition;
 use App\Models\JobApplySocietie;
 use App\Models\JobVacancie;
@@ -82,6 +83,10 @@ class JobApplySocietieController extends Controller
                         'date' => now()
 
                     ]);
+
+                    $avaliable = AvailablePosition::findOrFail($request->positions);
+                    $avaliable->apply_capacity += 1;
+                    $avaliable->save();
 
                     return response()->json(['message' => 'Applying for job successful'] , 200);
                 }

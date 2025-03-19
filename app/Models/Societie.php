@@ -13,5 +13,8 @@ class Societie extends Model
         return $this->belongsTo(Regional::class);
     }
 
-    
+    public function applyjob()
+    {
+        return $this->hasOne(JobApplySocietie::class);
+    }
 }

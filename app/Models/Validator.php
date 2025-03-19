@@ -10,6 +10,6 @@ class Validator extends Model
 
     public function validation()
     {
-        return $this->hasOne(Validation::class);
+        return $this->hasMany(Validation::class);
     }
 }

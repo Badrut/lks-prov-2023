@@ -12,4 +12,6 @@ class Societie extends Model
     {
         return $this->belongsTo(Regional::class);
     }
+
+    
 }

@@ -8,6 +8,11 @@ class AvailablePosition extends Model
 {
     protected $guarded = ['id'];
 
+    protected $hidden = [
+        'id',
+        'job_vacancy_id',
+    ];
+
     public function vacancie()
     {
         return $this->belongsTo(JobVacancie::class , 'id');

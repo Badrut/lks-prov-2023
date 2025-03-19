@@ -15,16 +15,16 @@ class JobVacancie extends Model
 
     public function avaliable()
     {
-        return $this->hasOne(AvailablePosition::class , 'job_vacancy_id');
+        return $this->hasMany(AvailablePosition::class , 'job_vacancy_id');
     }
 
     public function jobApplyPosition()
     {
-        return $this->hasOne(JobApplyPosition::class , 'job_vacancy_id');
+        return $this->hasMany(JobApplyPosition::class , 'job_vacancy_id');
     }
 
     public function jobApplySocietie()
     {
-        return $this->hasOne(JobApplySocietie::class , 'job_vacancy_id');
+        return $this->hasMany(JobApplySocietie::class , 'job_vacancy_id');
     }
 }

@@ -10,6 +10,6 @@ class Regional extends Model
 
     public function societie()
     {
-        return $this->belongsTo(Regional::class);
+        return $this->hasMany(Regional::class);
     }
 }

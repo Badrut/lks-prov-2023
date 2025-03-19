@@ -11,6 +11,6 @@ class Validation extends Model
 
     public function validator()
     {
-        return $this->belongsTo(Validator::class);
+        return $this->belongsTo(Validator::class , 'validator_id');
     }
 }
